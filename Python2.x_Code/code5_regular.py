@@ -128,3 +128,35 @@ for m in re.finditer(pattern, 'one1two2three3four4'):
 ### 输出 ###
 # 1 2 3 4
 
+pattern = re.compile(r'(\w+) (\w+)')
+s = 'i say, hello world!'
+
+print re.sub(pattern, r'\2 \1', s)
+
+
+def func(m):
+    return m.group(1).title() + ' ' + m.group(2).title()
+
+
+print re.sub(pattern, func, s)
+
+### output ###
+# say i, world hello!
+# I Say, Hello World!
+
+pattern = re.compile(r'(\w+) (\w+)')
+s = 'i say, hello world!'
+
+print re.subn(pattern, r'\2 \1', s)
+
+
+def func(m):
+    return m.group(1).title() + ' ' + m.group(2).title()
+
+
+print re.subn(pattern, func, s)
+
+### output ###
+# ('say i, world hello!', 2)
+# ('I Say, Hello World!', 2)
+
